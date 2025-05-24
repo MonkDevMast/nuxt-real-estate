@@ -1,32 +1,10 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import { useRouter } from "vue-router";
 import MainSection from '~/components/VoiceInput.vue';
-import DefaultLayout from '~/layouts/default.vue';
-import BlankLayout from '~/layouts/blank.vue';
-
-import PropertyList from '~/pages/property-list.vue';
-import Comparison from '~/pages/comparison.vue';
-import Register from '~/pages/register.vue';
-import Text from '~/pages/text.vue';
-import Confirmation from '~/pages/confirmation.vue';
-import Video from '~/pages/property-detail/videos/[id].vue';
-import Image from '~/pages/property-detail/images/[id].vue';
-import Map from '~/pages/property-detail/map/[id].vue';
-import ThreeDimentionalMap from '~/pages/property-detail/3d-map/[id].vue';
-
-import { usePageLayoutStore } from '~/stores/pagelayoutStore';
-
-const store = usePageLayoutStore();
-
 definePageMeta({
   layout: false,
 });
-
-let pageState = ref(store.pagelayout);
-
 const router = useRouter();
-
 useHead({
   title: "Rechitta",
   meta: [
@@ -42,7 +20,6 @@ const isActive = ref(true);
 const isTransitioning = ref(false);
 
 const toggleMic = () => {
-  // console.log(pageState.value)
   isActive.value = !isActive.value;
   isTransitioning.value = true;
   setTimeout(() => {
@@ -53,22 +30,12 @@ const toggleMic = () => {
 const micText = ref("Rachitta is Listening....");
 
 function goToProperties() {
-  console.log(store.pagelayout);
-  store.setLayout('propertyList');
-  console.log(store.pagelayout);
-  pageState.value = store.pagelayout;
-  // pageState.value = 'propertyList';
-  // router.push("/property-list");
+  router.push("/property-list");
 }
-
-watch(pageState, (newValue) => {
-  console.log(newValue);
-  pageState.value = newValue;
-})
 </script>
 
 <template>
-  <div class="relative h-full w-[100vw] overflow-hidden text-white" v-if="store.pagelayout == 'main'">
+  <div class="relative h-full w-[100vw] overflow-hidden text-white">
     <!-- Background Video -->
     <video
     autoplay
@@ -76,12 +43,12 @@ watch(pageState, (newValue) => {
     loop
     playsinline
     class="absolute top-0 left-0 w-full h-full object-cover transform scale-100"
-  >
-      <source src="/public/videos/background.webm" type="video/mp4" />
-      Your browser does not support the video tag.
-  </video>
+>
+    <source src="/public/videos/background.webm" type="video/mp4" />
+    Your browser does not support the video tag.
+</video>
 
-  <img src="../assets/images/layout-bg.png" class="absolute top-0 left-0 w-full h-full object-cover"/>
+<img src="../assets/images/layout-bg.png" class="absolute top-0 left-0 w-full h-full object-cover"/>
 
     <!-- Overlay Content -->
     <div class="relative z-10 flex flex-col h-full w-full bg-0">
@@ -139,17 +106,4 @@ watch(pageState, (newValue) => {
       </div>
     </div>
   </div>
-  <BlankLayout v-else-if="store.pagelayout == '/register'">
-    <Register />
-  </BlankLayout>
-  <Confirmation v-else-if="store.pagelayout == '/confirmation'" />
-  <DefaultLayout v-else-if="store.pagelayout !== 'main' && store.pagelayout != 'confirmation'">
-    <Comparison v-if="store.pagelayout == '/comparison'" />
-    <Text v-else-if="store.pagelayout == '/text'" />
-    <Video v-else-if="store.pagelayout == '/property-detail/videos/1701'" />
-    <Image v-else-if="store.pagelayout == '/property-detail/images/1701'" />
-    <Map v-else-if="store.pagelayout == '/property-detail/map/1701'" />
-    <ThreeDimentionalMap v-else-if="store.pagelayout == '/property-detail/3d-map/17011'" />
-    <PropertyList v-else/>
-  </DefaultLayout>
 </template>

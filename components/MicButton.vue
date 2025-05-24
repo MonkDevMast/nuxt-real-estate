@@ -97,19 +97,6 @@
 </template>
 
 <script setup lang="ts">
-import { usePageLayoutStore } from '~/stores/pagelayoutStore';
-import { createPinia } from 'pinia';
-import { createApp } from 'vue';
-import App from '~/app.vue';
-
-// store.setLayout();
-const pinia = createPinia();
-const app = createApp(App);
-
-app.use(pinia);
-
-const store = usePageLayoutStore();
-
 const router = useRouter();
 
 const props = defineProps<{
@@ -127,9 +114,7 @@ const toggleMicrophone = () => {
 };
 
 const handleNavigation = (page: string) => {
-  // router.push(page)
-  store.setLayout(page);
-  console.log(store.pagelayout);
+  router.push(page)
 };
 </script>
 

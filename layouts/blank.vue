@@ -1,9 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref, onBeforeUnmount } from "vue";
 import { useRouter, useRoute } from "vue-router";
-import { usePageLayoutStore } from '~/stores/pagelayoutStore';
-
-const store = usePageLayoutStore();
 
 const router = useRouter(); 
 
@@ -20,8 +17,7 @@ onMounted(() => {
  
 const handleTransitionEnd = () => {
   transitionTimeout.value = window.setTimeout(() => {
-    store.setLayout('main');
-    // router.push('/');
+    router.push('/');
   }, 200);
 };
  

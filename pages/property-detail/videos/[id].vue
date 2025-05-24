@@ -231,9 +231,7 @@ const pauseAllVideosExcept = (index: number) => {
   border-radius: 49.633px;
   opacity: 1;
   position: relative;
-  /* top:-20px; */
-  /* left: 50%; */
-  /* transform: translate(-50%, -50%); */
+  top:40px
 }
 
 .outer-video-swiper .swiper-pagination-bullet-active {

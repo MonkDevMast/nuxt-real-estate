@@ -2,9 +2,6 @@
 import { onMounted, ref, onBeforeUnmount } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import MainSection from '~/components/VoiceInput.vue';
-import { usePageLayoutStore } from '~/stores/pagelayoutStore';
-
-const store = usePageLayoutStore();
 
 const router = useRouter();
 const route = useRoute();
@@ -27,8 +24,7 @@ const navigateHome = () => {
 
 const handleTransitionEnd = () => {
   transitionTimeout.value = window.setTimeout(() => {
-    store.setLayout('main');
-    // router.push('/');
+    router.push('/');
   }, 200);
 };
 
@@ -39,8 +35,7 @@ const toggleMic = () => {
     isActive.value = true;
     if (route.name === "intrection") {
       setTimeout(() => {
-        store.setLayout('propertyList');
-        // router.push('/property-list');
+        router.push('/property-list');
       }, 2000);
     }
   }

@@ -1,10 +1,6 @@
 <script setup lang="ts">
 import { useRouter } from "vue-router";
 import MainSection from '~/components/VoiceInput.vue';
-import { usePageLayoutStore } from '~/stores/pagelayoutStore';
-
-const store = usePageLayoutStore();
-
 definePageMeta({
   layout: false,
 });
@@ -31,8 +27,7 @@ const toggleMic = () => {
 const micText = ref("Rachitta is Listening....");
 
 function goToProperties() {
-  store.setLayout('propertyList');
-  // router.push("/property-list");
+  router.push("/property-list");
 }
 </script>
 
@@ -60,7 +55,7 @@ function goToProperties() {
           src="/assets/images/richitta-logo.svg"
           alt="Rechitta Logo cursor-pointer"
           class="h-3 lg:h-5 cursor-pointer"
-          <!-- @click="$router.push('/')" -->
+          @click="$router.push('/')"
         />
 
         <div class="absolute top-12 right-8 bg-[#90dfff] p-4 rounded-lg shadow-lg w-64"
@@ -74,6 +69,10 @@ function goToProperties() {
       </div>
     </div>
       </div>
+
+
+      
+    
      
       <Transition name="slide-up" appear>
           <div  class="absolute hidden md:block md:right-5 md:bottom-2">
@@ -86,6 +85,7 @@ function goToProperties() {
             />
           </div>
         </Transition>
+        
      
         <div
         class="absolute bottom-0 left-0 w-full h-[15%] md:h-[20%] text-white flex md:hidden"
