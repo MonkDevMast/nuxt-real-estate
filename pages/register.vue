@@ -4,13 +4,10 @@
     <div class="flex flex-col min-h-screen items-center text-white font-sans relative">
       <!-- Header -->
       <HeaderRegister />
-  
       <!-- Mobile Layout (form first, then card) -->
       <MobileRegister />
-  
       <!-- Desktop Layout (original layout) -->
        <DesktopRegister />
-  
       <!-- Footer (Desktop only) -->
        <FooterRegister />
      </div>
@@ -27,10 +24,11 @@
   import unit2 from "@/assets/images/units/unit2.png";
   import { Pagination } from "swiper/modules";
   import MainSection from '~/components/VoiceInput.vue';
-  import MobileRegister from '~/pages/components/register/Mobile.vue';
-  import DesktopRegister from '~/pages/components/register/Desktop.vue';
-  import FooterRegister from '~/pages/components/register/Footer.vue';
-  import HeaderRegister from '~/pages/components/register/Header.vue';
+  
+  import MobileRegister from '~/pages/register/Mobile.vue';
+  import DesktopRegister from '~/pages/register/Desktop.vue';
+  import FooterRegister from '~/pages/register/Footer.vue';
+  import HeaderRegister from '~/pages/register/Header.vue';
   
   const router = useRouter();
   

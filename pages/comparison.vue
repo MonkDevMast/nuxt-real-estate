@@ -7,7 +7,7 @@
         <div class="md:hidden overflow-x-auto pb-4 -mx-5 px-5">
           <div class="flex gap-5" style="width: max-content">
             <!-- Property - Mobile -->
-            <div v-for="(data) in realStateDatas">
+            <div v-for="(data) in realEstateDatas">
               <PropertyMobile
                 :videoStates="videoStates"
                 :slides="slides"
@@ -21,7 +21,7 @@
         <!-- Desktop grid layout -->
         <div class="hidden md:grid grid-cols-1 md:grid-cols-2 gap-5">
           <!-- Property  - Desktop -->
-          <div v-for="(data) in realStateDatas">
+          <div v-for="(data) in realEstateDatas">
             <PropertyDesktop
               :videoStates="videoStates"
               :slides="slides"
@@ -43,8 +43,8 @@ import unit1 from "@/assets/images/units/unit1.png";
 import unit2 from "@/assets/images/units/unit2.png";
 import { Pagination } from "swiper/modules";
 import { ref } from 'vue';
-import PropertyMobile from "~/pages/components/comparison/PropertyMobile.vue";
-import PropertyDesktop from "~/pages/components/comparison/PropertyDesktop.vue";
+import PropertyMobile from "~/components/comparison/PropertyMobile.vue";
+import PropertyDesktop from "~/components/comparison/PropertyDesktop.vue";
 
 const slides = [
   unit1,
@@ -52,7 +52,7 @@ const slides = [
 ];
 
 // fetch data from backend
-const realStateDatas = ref([
+const realEstateDatas = ref([
   {
     var: '2BHK - Corner Unit',
     view: 'Full Burj Khalifa + Downtown Skyline',

@@ -69,10 +69,6 @@ function goToProperties() {
       </div>
     </div>
       </div>
-
-
-      
-    
      
       <Transition name="slide-up" appear>
           <div  class="absolute hidden md:block md:right-5 md:bottom-2">
@@ -85,7 +81,6 @@ function goToProperties() {
             />
           </div>
         </Transition>
-        
      
         <div
         class="absolute bottom-0 left-0 w-full h-[15%] md:h-[20%] text-white flex md:hidden"
