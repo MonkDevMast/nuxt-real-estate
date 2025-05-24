@@ -12,11 +12,15 @@
 
 <script setup>
 import { ref } from 'vue';
+import { usePageLayoutStore } from '~/stores/pagelayoutStore';
+
+const store = usePageLayoutStore();
 
 const router = useRouter();
 
 const navigateHome = () => {
-  router.push('/')
+  store.setLayout('main');
+  // router.push('/')
 }
 
 </script>

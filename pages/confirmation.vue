@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { useRouter } from "vue-router";
 import MainSection from '~/components/VoiceInput.vue';
+import { usePageLayoutStore } from '~/stores/pagelayoutStore';
+
+const store = usePageLayoutStore();
+
 definePageMeta({
   layout: false,
 });
@@ -27,7 +31,8 @@ const toggleMic = () => {
 const micText = ref("Rachitta is Listening....");
 
 function goToProperties() {
-  router.push("/property-list");
+  store.setLayout('propertyList');
+  // router.push("/property-list");
 }
 </script>
 
@@ -55,7 +60,7 @@ function goToProperties() {
           src="/assets/images/richitta-logo.svg"
           alt="Rechitta Logo cursor-pointer"
           class="h-3 lg:h-5 cursor-pointer"
-          @click="$router.push('/')"
+          <!-- @click="$router.push('/')" -->
         />
 
         <div class="absolute top-12 right-8 bg-[#90dfff] p-4 rounded-lg shadow-lg w-64"

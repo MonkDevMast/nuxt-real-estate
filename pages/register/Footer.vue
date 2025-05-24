@@ -37,6 +37,9 @@ import { Swiper } from 'swiper/vue';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import MainSection from '~/components/VoiceInput.vue';
+import { usePageLayoutStore } from '~/stores/pagelayoutStore';
+
+const store = usePageLayoutStore();
 
 const router = useRouter();
 
@@ -58,7 +61,8 @@ useHead({
 const isActive = ref(false);
 
 const navigateHome = () => {
-  router.push('/')
+  store.setLayout('main');
+  // router.push('/')
 }
 
 const toggleMic = () => {

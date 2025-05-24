@@ -68,7 +68,7 @@ watch(pageState, (newValue) => {
 </script>
 
 <template>
-  <div class="relative h-full w-[100vw] overflow-hidden text-white" v-if="pageState == 'main'">
+  <div class="relative h-full w-[100vw] overflow-hidden text-white" v-if="store.pagelayout == 'main'">
     <!-- Background Video -->
     <video
     autoplay
@@ -139,7 +139,7 @@ watch(pageState, (newValue) => {
       </div>
     </div>
   </div>
-  <BlankLayout v-if="store.pagelayout == '/register'">
+  <BlankLayout v-else-if="store.pagelayout == '/register'">
     <Register />
   </BlankLayout>
   <Confirmation v-else-if="store.pagelayout == '/confirmation'" />

@@ -15,22 +15,11 @@
   
   <script setup>
   import { ref } from 'vue';
-  import { VueTelInput } from 'vue-tel-input';
-  import 'vue-tel-input/vue-tel-input.css';
-  import { Swiper, SwiperSlide } from 'swiper/vue';
-  import 'swiper/css';
-  import 'swiper/css/pagination';
-  import unit1 from "@/assets/images/units/unit1.png";
-  import unit2 from "@/assets/images/units/unit2.png";
-  import { Pagination } from "swiper/modules";
-  import MainSection from '~/components/VoiceInput.vue';
   
   import MobileRegister from '~/pages/register/Mobile.vue';
   import DesktopRegister from '~/pages/register/Desktop.vue';
   import FooterRegister from '~/pages/register/Footer.vue';
   import HeaderRegister from '~/pages/register/Header.vue';
-  
-  const router = useRouter();
   
   definePageMeta({
     layout: 'blank',
@@ -46,30 +35,7 @@
       },
     ],
   });
-  
-  const isActive = ref(false);
-  
-  const navigateHome = () => {
-    router.push('/')
-  }
-  
-  const toggleMic = () => {
-    isActive.value = !isActive.value;
-    isTransitioning.value = true;
-    setTimeout(() => {
-      goToProperties();
-    }, 500);
-  };
-  
-  const submit = () => {
-    router.push("/confirmation");
-  };
-  
-  const slides = [
-    unit1,
-    unit2
-  ];
-  
+
   const formData = ref({
     fullName: '',
     email: '',
@@ -78,12 +44,7 @@
     brokerName: '',
     brokerAgency: ''
   });
-  
-  const submitForm = () => {
-    console.log('Form submitted:', formData.value);
-    // Here you would typically send the data to your backend
-    alert('Interest registered successfully!');
-  };
+
   </script>
   
   <style scoped>
